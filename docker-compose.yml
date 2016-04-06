@@ -8,14 +8,17 @@ services:
     ports:
       - "23000:23000"
 
+    # init:
+    # docker-compose run ris-web bash
+    #   mongoimport --host mongo --db ris --collection config --type json --jsonArray --file ./config/init.config.json
+
+    # use:
+    # http://localhost:23000/admin/config
+
   ris-scraper:
     build:
       context: .
       dockerfile: Dockerfile-ris-scraper
-
-    # init:
-    # docker-compose run ris-scraper bash
-    #   mongoimport --host mongo --db ris --collection config --type json --jsonArray --file ./config/init.config.json
 
   elasticsearch:
     image: elasticsearch:2.3.1
