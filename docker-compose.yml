@@ -14,7 +14,8 @@ services:
       dockerfile: Dockerfile-ris-scraper
 
     # init:
-    # mongoimport --host mongo --db ris --collection config --type json --jsonArray --file ./config/init.config.json
+    # docker-compose run ris-scraper bash
+    #   mongoimport --host mongo --db ris --collection config --type json --jsonArray --file ./config/init.config.json
 
   elasticsearch:
     image: elasticsearch:2.3.1
@@ -31,7 +32,7 @@ services:
       - mongo-db:/data/db
       - mongo-configdb:/data/configdb
 
-# volumes:
-#   elasticsearch-data:
-#   mongo-db:
-#   mongo-configdb:
+volumes:
+  elasticsearch-data:
+  mongo-db:
+  mongo-configdb:

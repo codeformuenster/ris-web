@@ -1,4 +1,4 @@
-FROM ubuntu:15.10
+FROM ubuntu:16.04
 
 RUN apt-get update && apt-get install -y \
   git memcached python-virtualenv build-essential python-dev libxml2-dev libxslt1-dev ghostscript poppler-utils libpng12-dev libfreetype6-dev protobuf-compiler libprotobuf-dev libjpeg-dev python-pip pkg-config
