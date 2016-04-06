@@ -1,0 +1,14 @@
+FROM ubuntu:15.10
+
+RUN apt-get update && apt-get install -y \
+  git memcached python-virtualenv build-essential python-dev libxml2-dev libxslt1-dev ghostscript poppler-utils libpng12-dev libfreetype6-dev protobuf-compiler libprotobuf-dev libjpeg-dev python-pip pkg-config
+
+RUN apt-get update && apt-get install -y \
+  mongodb-clients
+
+WORKDIR /srv/www/ris-scraper
+RUN git clone https://github.com/okfde/ris-scraper.git .
+RUN pip install --upgrade setuptools pip
+RUN pip install -r requirements.txt
+
+COPY config.py .

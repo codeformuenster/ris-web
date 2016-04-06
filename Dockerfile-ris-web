@@ -1,0 +1,15 @@
+FROM ubuntu:15.10
+
+RUN apt-get update && apt-get install -y \
+  git memcached python-virtualenv build-essential python-dev libxml2-dev libxslt1-dev ghostscript poppler-utils libpng12-dev libfreetype6-dev protobuf-compiler libprotobuf-dev libjpeg-dev python-pip pkg-config
+
+WORKDIR /srv/www/ris-web
+RUN git clone https://github.com/okfde/ris-web.git .
+RUN pip install --upgrade setuptools pip
+RUN pip install numpy
+RUN pip install -r requirements.txt
+
+COPY config.py .
+
+CMD ["python", "./runserver.py"]
+EXPOSE 23000
