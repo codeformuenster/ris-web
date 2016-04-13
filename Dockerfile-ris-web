@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get update && apt-get install -y \
   mongodb-clients
-  
+
 WORKDIR /srv/www/ris-web
 RUN git clone https://github.com/okfde/ris-web.git .
 RUN pip install --upgrade setuptools pip
